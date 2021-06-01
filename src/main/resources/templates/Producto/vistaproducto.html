@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout::head">
+<meta charset="UTF-8">
+<title th:text="${titulo}"></title>
+<script type="text/javascript"
+	th:src="@{/script/jquery/jQuery_v3.6.0.js}"></script>
+<script type="text/javascript"
+	th:src="@{/script/bootstrap/bootstrap.bundle.js}"></script>
+<script type="text/javascript"
+	th:src="@{/script/jsweb/producto/vistaproducto.js}"></script>
+<link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.css}">
+<link rel="stylesheet" href="css/styles/master.css">
+<link rel="stylesheet" href="css/css/all.min.css">
+<script th:src="@{/script/jsweb/master.js}"></script>
+</head>
+<script type="text/javascript"
+	th:src="@{/script/jsweb/producto/vistaproducto.js}"></script>
+<body>
+	<nav th:replace="layout::navegacion" ></nav>
+	
+	<div class="card">
+		<div class="card-header badge-dark text-center font-weight-bold">PRODUCTOS</div>
+		<div class="card-body">
+
+			<button type="button" id="btnagregarproducto" class="btn btn-info"><i class="fas fa-minus-circle"></i>Nuevo Producto</button>
+
+			<hr />
+			<table id="tblproducto" class="table">
+				<thead>
+					<tr>
+						<th scope="col">Codigo</th>
+						<th scope="col">Nombre</th>
+						<th scope="col">PrecioUni</th>
+						<th scope="col">Detalle</th>
+						<th scope="col">Imagen</th>
+						<th scope="col">CodCategoria</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="producto :${formulario}">
+						<td th:text="${producto.codproducto}"></td>
+						<td th:text="${producto.nombre}"></td>
+						<td th:text="${producto.preciouni}"></td>
+						<td th:text="${producto.detalle}"></td>
+						<td th:text="${producto.imagen}"></td>
+						<td th:text="${producto.codcategoria}"></td>
+						<td>
+							<button type="button"
+								class="btn btn-secondary btnactualizarproducto"
+								th:data-codproducto="${producto.codproducto}"
+								th:data-nombre="${producto.nombre}"
+								th:data-preciouni="${producto.preciouni}"
+								th:data-detalle="${producto.detalle}"
+								th:data-imagen="${producto.imagen}"
+								th:data-codcategoria="${producto.codcategoria}">Actualizar</button>
+						</td>
+						<td>
+							<button type="button" class="btn btn-danger btneliminarproducto"
+								th:data-cododontologo="${producto.codproducto}"
+								th:data-nombre="${producto.nombre}">Eliminar</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<!-- Modal Registrar y Actualizar Productos -->
+	<div class="modal fade" id="modalproducto" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Producto</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="txtnombre">Nombre</label> 
+								<input type="text" class="form-control" id="txtnombre" maxlength="40">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="txtpreciouni">Precio Unitario</label> 
+								<input type="number" class="form-control" id="txtpreciouni">
+							</div><br>
+							<div class="form-group col-md-6">
+								<label for="txtdetalle">Detalle</label> 
+								<input type="text" class="form-control" id="txtdetalle">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="txtimg">Imagen</label> 
+								<input type="text" class="form-control" id="txtimg">
+							</div><br>
+							<div class="form-group col-md-4">
+								<label for="txtcodcategoria">Categoria</label> 
+								<input type="text" class="form-control" id="txtcodcategoria">
+							</div>
+							<input type="hidden" id="hddcodproducto" value="0">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+					<button type="button" id="btnregistrarproducto" class="btn btn-primary">Grabar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Modal Eliminar Producto -->
+	<div class="modal fade" id="modaleliminarproducto" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Producto</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<label id="mensajeeliminar"></label>
+					<input type="hidden" id="hddcodproductoeliminar">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+					<button type="button" id="btneliminarproducto" class="btn btn-danger">Si, Eliminar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:replace="layout::pie"></div>
+	<div th:replace="layout::flecha"></div>
+	<script type="text/javascript" th:src="@{/script/jsweb/master.js}"></script>
+</body>
+</html>
