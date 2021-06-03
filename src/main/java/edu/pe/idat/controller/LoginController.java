@@ -1,4 +1,4 @@
-package edu.pe.idat.Controller;
+package edu.pe.idat.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

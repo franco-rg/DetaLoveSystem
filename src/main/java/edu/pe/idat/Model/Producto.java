@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="producto")
+@Table(name="producto")  
 public class Producto {
 	@Id
 	private String codproducto;
@@ -85,5 +85,8 @@ public class Producto {
 
 	public Producto() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
+
+	
 }

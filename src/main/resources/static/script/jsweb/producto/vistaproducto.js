@@ -2,7 +2,7 @@ $(document).on("click", "#btnagregarproducto", function(){
 	$("#txtnombre").val("");
 	$("#txtpreciouni").val("");
 	$("#txtdetalle").val("");
-	$("#txtimg").val("");
+	$("#txtimagen").val("");
 	$("#txtcodcategoria").val("");
 	$("#modalproducto").modal("show")
 })
@@ -11,7 +11,7 @@ $(document).on("click", ".btnactualizarproducto", function(){
 	$("#txtnombre").val($(this).attr("data-nombre"));
 	$("#txtpreciouni").val($(this).attr("data-preciouni"));
 	$("#txtdetalle").val($(this).attr("data-detalle"));
-	$("#txtimg").val($(this).attr("data-imagen"));
+	$("#txtimagen").val($(this).attr("data-imagen"));
 	$("#txtcodcategoria").val($(this).attr("data-codcategoria"));
 	$("#hddcodproducto").val($(this).attr("data-codproducto"));
 	$("#modalproducto").modal("show")
@@ -28,7 +28,7 @@ $(document).on("click", "#btnregistrarproducto", function(){
 				nombre: $("#txtnombre").val(),
 				preciouni: $("#txtpreciouni").val(),
 				detalle: $("#txtdetalle").val(),
-				imagen: $("#txtimg").val(),
+				imagen: $("#txtimagen").val(),
 				codcategoria: $("#txtcodcategoria").val(),
 			}),
 			success: function(resultado) {
@@ -50,7 +50,7 @@ $(document).on("click", "#btnregistrarproducto", function(){
 				nombre: $("#txtnombre").val(),
 				preciouni: $("#txtpreciouni").val(),
 				detalle: $("#txtdetalle").val(),
-				imagen: $("#txtimg").val(),
+				imagen: $("#txtimagen").val(),
 				codcategoria: $("#txtcodcategoria").val()
 			}),
 			success: function(resultado) {
@@ -69,7 +69,7 @@ $(document).on("click", "#btnregistrarproducto", function(){
 function ListarProductos(){
 	$.ajax({
 		type: "GET",
-		url: "/Producto/listarProductojs",
+		url: "/Producto/vistaproductojs",
 		dataType: "json",
 		success:function(resultado){
 			$("#tblproducto > tbody").html("");

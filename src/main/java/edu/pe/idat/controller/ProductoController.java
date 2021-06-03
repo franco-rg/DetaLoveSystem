@@ -1,4 +1,4 @@
-package edu.pe.idat.Controller;
+package edu.pe.idat.controller;
 
 import java.util.List;
 
@@ -44,9 +44,9 @@ public class ProductoController {
 	}
 	
 	
-	@GetMapping("/listarProductojs")
+	@GetMapping("/vistaproductojs")
 	@ResponseBody
-	public List<Producto> listarProducto(){
+	public List<Producto> vistaproducto(){
 		return servicio.listar();
 	}
 	

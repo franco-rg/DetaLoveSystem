@@ -18,10 +18,10 @@ public interface ProductoRepository extends JpaRepository<Producto, String>{
 	@Query(value="{call sp_MantRegistrarProducto(:pronom, :propre, :prodet, :proimg, :procat)}",
 			nativeQuery = true)
 	void registrarProducto(@Param("pronom") String nombre,
-			                 @Param("propre") Double preciouni,
-			                 @Param("prodet") String detalle,
-			                 @Param("proimg") String imagen,
-			                 @Param("procat") String codcategoria);
+			               @Param("propre") Double preciouni,
+			               @Param("prodet") String detalle,
+			               @Param("proimg") String imagen,
+			               @Param("procat") String codcategoria);
 	
 	@Transactional
 	@Modifying
